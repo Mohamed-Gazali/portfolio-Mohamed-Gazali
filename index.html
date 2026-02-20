@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,19 +50,19 @@
         <div class="collapse navbar-collapse" id="menu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#accueil">Accueil</a>
+              <a class="nav-link text-white" href="#accueil">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#projets">Projets</a>
+              <a class="nav-link text-white" href="#projets">Projets</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#competences">Compétences</a>
+              <a class="nav-link text-white" href="#competences">Compétences</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#apropos">À propos</a>
+              <a class="nav-link text-white" href="#apropos">À propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
+              <a class="nav-link text-white" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
@@ -72,13 +72,18 @@
     <!-- 🏠 HERO -->
     <section
       id="accueil"
-        class="vh-100 d-flex align-items-center   bg-primary text-white text-center"
-      >
-
+      class="vh-100 d-flex align-items-center bg-dark text-white text-center"
+    >
+      <img
+        src="background.jpg"
+        alt="Background"
+        class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover opacity-25"
+      />
       <div class="container">
         <h1 class="display-4 fw-bold">Développeur Web & Logiciel</h1>
         <p class="lead mt-3">
-          Python • Flask • Tkinter • SQLite • HTML • CSS • Bootstrap, JavaScript (bases)
+          Python • Flask • Tkinter • SQLite • HTML • CSS • Bootstrap, Tailwind
+          CSS, JavaScript (bases)
         </p>
         <p class="mt-4">
           Je conçois des sites web professionnels et des applications de gestion
@@ -95,141 +100,166 @@
       </div>
     </section>
 
-    <!-- 🧑‍💻 PROJETS -->
-    <section id="projets" class="py-5 fade-in">
+    <!-- 👤 PROFIL -->
+    <section id="profil" class="py-5 text-center fade-in">
       <div class="container">
-        <h2 class="text-center mb-5">Projets Réalisés</h2>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="card shadow project-card d-flex flex-column">
-              <div class="card-body">
-                <h5 class="card-title">Site Web – Orphelinat</h5>
-                <p class="card-text">
-                  Site vitrine conçu pour un orphelinat afin de présenter ses
-                  actions et faciliter la communication.
-                </p>
-                <span class="badge bg-secondary">HTML</span>
-                <span class="badge bg-secondary">CSS</span>
-                <span class="badge bg-success">Bootstrap</span>
-                <div class="mt-3">
-                  <a
-                    href="https://OuwarMarayu.netlify.app"
-                    target="_blank"
-                    class="btn btn-outline-primary btn-sm"
-                  >
-                    Voir le site
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Projet Restaurant 1 -->
-          <div class="col-md-4">
-            <div class="card shadow project-card d-flex flex-column">
-              <div class="card-body">
-                <h5 class="card-title">Site Web – French Tacos</h5>
-                <p class="card-text">
-                  Site vitrine professionnel pour restaurant.
-                </p>
-                <ul>
-                  <li>Menu en ligne</li>
-                  <li>Contact WhatsApp</li>
-                  <li>Design responsive</li>
-                </ul>
-                <span class="badge bg-primary">HTML</span>
-                <span class="badge bg-secondary">CSS</span>
-                <span class="badge bg-success">Bootstrap</span>
-                <span class="badge bg-success">JavaScript ( Bases)</span>
-                <div class="mt-3">
-                <a
-                  href="https://frenchtacos01.netlify.app"
-                  target="_blank"
-                  class="btn btn-outline-primary btn-sm"
-                >
-                  Voir le site
-                </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Projet Restaurant 2 -->
-          <div class="col-md-4">
-            <div class="card shadow project-card d-flex flex-column">
-              <div class="card-body">
-                <h5 class="card-title">Site Web – Restaurant Dragon D'or</h5>
-                <p class="card-text">
-                  Site moderne avec galerie et informations pratiques.
-                </p>
-                <ul>
-                  <li>PWA - Restaurant Dragon D'or</li>
-                  <li>Type : Progressive Web App</li>
-                  <li>Installation sur mobile et ordinateur</li>
-                  <li>Navigation hors ligne (selon config)</li>
-                  <li>Interface moderne</li>
-                  <li>Galerie d'images</li>
-                  <li>Localisation</li>
-                  <li>Interface moderne</li>
-                </ul>
-                <span class="badge bg-primary">HTML</span>
-                <span class="badge bg-secondary">CSS</span>
-                <span class="badge bg-warning text-dark">JavaScript</span>
-                <div class="mt-3">
-                <a
-                  href="https://RestaurantDragondor.netlify.app"
-                  target="_blank"
-                  class="btn btn-outline-primary btn-sm"
-                >
-                  Voir le site
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Logiciel -->
-          <div class="col-md-4">
-            <div class="card shadow project-card d-flex flex-column">
-              <div class="card-body">
-                <h5 class="card-title">
-                  Logiciel de Gestion de Stock
-                  <span class="badge bg-warning text-dark">En cours</span>
-                </h5>
-                <p class="card-text">
-                  Application desktop de gestionnaire de tâches (usage bureau).
-                </p>
-                <ul>
-                  <li>Gestion des tâches</li>
-                  <li>Base de données locale</li>
-                  <li>Interface graphique</li>
-                </ul>
-                <span class="badge bg-success">Python</span>
-                <span class="badge bg-info text-dark">Tkinter</span>
-                <span class="badge bg-info text-dark">Flask</span>
-                <span class="badge bg-dark">SQLite</span>
-              </div>
-            </div>
-          </div>
+        <img
+          src="profil.jpg"
+          alt="Photo de Mohamed Idrissa"
+          class="profile-img rounded-circle mb-3 shadow"
+        />
+        <h3 class="fw-bold">Mohamed-Gazali</h3>
+        <p class="text-muted mb-2 text-bold">
+          Développeur Full-stack (junior) passionné par les interfaces modernes
+          et les solutions numériques utiles.
+        </p>
+        <div class="mt-4">
+          <a
+            href="assets/cv/CV_Mohamed_Idrissa.pdf"
+            class="btn btn-outline-dark btn-lg"
+            download
+          >
+            📄 Télécharger mon CV
+          </a>
         </div>
       </div>
     </section>
 
+    <section>
+      <div class="container text-center">
+        <h2 id="projets" class="mb-4">Projets & Réalisations</h2>
+        <p class="lead mb-5">
+          Découvrez mes réalisations en développement web et logiciel.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== PROJETS WEB ===== -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="card shadow project-card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Site Web – Orphelinat</h5>
+            <p class="card-text">
+              Site vitrine conçu pour un orphelinat afin de présenter ses
+              actions et faciliter la communication.
+            </p>
+            <span class="badge bg-secondary">HTML</span>
+            <span class="badge bg-secondary">CSS</span>
+            <span class="badge bg-success">Bootstrap</span>
+            <div class="mt-3">
+              <a
+                href="https://OuwarMarayu.netlify.app"
+                target="_blank"
+                class="btn btn-outline-primary btn-sm"
+              >
+                Voir le site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant 1 -->
+      <div class="col-md-4">
+        <div class="card shadow project-card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Site Web – French Tacos</h5>
+            <ul>
+              <li>Menu en ligne</li>
+              <li>Commande en ligne</li>
+              <li>Contact WhatsApp</li>
+              <li>Design responsive</li>
+            </ul>
+            <span class="badge bg-primary">HTML</span>
+            <span class="badge bg-secondary">CSS</span>
+            <span class="badge bg-success">Tailwind CSS</span>
+            <span class="badge bg-success">JavaScript</span>
+            <div class="mt-3">
+              <a
+                href="https://frenchtacos01.netlify.app"
+                target="_blank"
+                class="btn btn-outline-primary btn-sm"
+              >
+                Voir le site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant 2 -->
+      <div class="col-md-4">
+        <div class="card shadow project-card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Site Web – Restaurant Dragon D'or</h5>
+            <ul>
+              <li>Application mobile & PC</li>
+              <li>Type : Progressive Web App</li>
+              <li>Installable mobile & PC</li>
+              <li>Navigation hors ligne (selon configuration)</li>
+              <li>Galerie & localisation</li>
+            </ul>
+            <span class="badge bg-primary">HTML</span>
+            <span class="badge bg-secondary">CSS</span>
+            <span class="badge bg-info text-dark">Tailwind CSS</span>
+            <span class="badge bg-warning text-dark">JavaScript</span>
+            <div class="mt-3">
+              <a
+                href="https://RestaurantDragondor.netlify.app"
+                target="_blank"
+                class="btn btn-outline-primary btn-sm"
+              >
+                Voir le site
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PROJET LOGICIEL (NOUVELLE LIGNE) ===== -->
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow project-card h-100 border-warning">
+          <div class="card-body">
+            <h5 class="card-title">
+              Logiciel de Gestionnnaire de Tâches
+              <span class="badge bg-warning text-dark">En cours</span>
+            </h5>
+            <p class="card-text">
+              Application desktop pour la gestion de tâches personnelles.
+            </p>
+            <ul>
+              <li>Gestion des tâches</li>
+              <li>Base de données locale</li>
+              <li>Connection multiple utilisateurs</li>
+              <li>Interface graphique</li>
+            </ul>
+            <span class="badge bg-success">Python</span>
+            <span class="badge bg-info text-dark">Tkinter</span>
+            <span class="badge bg-info text-dark">Flask</span>
+            <span class="badge bg-dark">SQLite</span>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- 🧠 COMPÉTENCES -->
     <section id="competences" class="py-5 bg-white fade-in">
       <div class="container text-center">
         <h2 class="mb-4">Compétences</h2>
         <div class="row">
           <div class="col-md-4">
-            <h5>Front-End</h5>
-            <p>HTML • CSS • Bootstrap • JavaScript</p>
+            <h5 class="text-primary">Front-End</h5>
+            <p>HTML • CSS • Bootstrap • Tailwind CSS • JavaScript • Tkinter</p>
           </div>
           <div class="col-md-4">
-            <h5>Back-End / Logiciel</h5>
-            <p>Python • Flask • Tkinter • SQLite</p>
+            <h5 class="text-primary">Back-End / Logiciel</h5>
+            <p>Python • Flask • SQLite</p>
           </div>
           <div class="col-md-4">
-            <h5>Outils</h5>
-            <p>Git • GitHub • VS Code • Figma</p>
+            <h5 class="text-primary">Outils</h5>
+            <p>GitHub • VS Code • Figma</p>
           </div>
         </div>
       </div>
@@ -245,8 +275,10 @@
           applications de gestion adaptées aux besoins des entreprises.
         </p>
         <p>
-          Actuellement spécialisé en Python, Flask, Tkinter et SQLite, je suis
-          disponible pour missions freelance et opportunités professionnelles.
+          Actuellement en apprentissage avancée du Backend (Python, Flask, et
+          SQLite), et bientot dans le développemt des applications mobile avec
+          Flutter(Dart), je suis disponible pour missions freelance et
+          opportunités professionnelles.
         </p>
       </div>
     </section>
@@ -265,8 +297,12 @@
           </a>
         </p>
         <p>
-          <a href="https://www.facebook.com/Développeur web" class="text-white  mx-2" target="_blank">
-          <i class="fab fa-facebook fa-2x"></i>
+          <a
+            href="https://www.facebook.com/Développeur web"
+            class="text-white mx-2"
+            target="_blank"
+          >
+            <i class="fab fa-facebook fa-2x"></i>
           </a>
           <a href="https://github.com/" class="text-white mx-2"
             ><i class="fab fa-github fa-2x"></i

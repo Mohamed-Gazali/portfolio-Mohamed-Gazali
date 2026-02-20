@@ -1,14 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portfolio Mohamed-Gazali</title>
+    <title>Portfolio | Mohamed-Gazali</title>
 
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
     <link rel="stylesheet" href="style.css" />
 
     <style>
@@ -17,25 +25,21 @@
       }
       .fade-in {
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease-out;
+        transform: translateY(30px);
+        transition: all 0.7s ease;
       }
       .fade-in.show {
         opacity: 1;
         transform: translateY(0);
       }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
   </head>
 
   <body class="bg-light text-dark">
-    <!-- 🔝 Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <!-- 🔝 NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
       <div class="container">
-        <a class="navbar-brand" href="#">Portfolio Mohamed-Gazali</a>
+        <a class="navbar-brand fw-bold" href="#">Mohamed-Gazali</a>
         <button
           class="navbar-toggler"
           data-bs-toggle="collapse"
@@ -46,106 +50,163 @@
         <div class="collapse navbar-collapse" id="menu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="#accueil" class="nav-link">Accueil</a>
+              <a class="nav-link" href="#accueil">Accueil</a>
             </li>
             <li class="nav-item">
-              <a href="#projets" class="nav-link">Projets</a>
+              <a class="nav-link" href="#projets">Projets</a>
             </li>
             <li class="nav-item">
-              <a href="#contact" class="nav-link">Contact</a>
+              <a class="nav-link" href="#competences">Compétences</a>
             </li>
             <li class="nav-item">
-              <a href="#apropos" class="nav-link">À propos</a>
+              <a class="nav-link" href="#apropos">À propos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- 🏠 Accueil -->
-    <section id="accueil" class="text-center py-5 bg-primary text-white">
-      <div class="container">
-        <h1 class="display-4 fw-bold">Bienvenue, je suis Mohamed-Gazali</h1>
-        <p class="lead mt-3">
-          Développeur web passionné par la création d’expériences numériques
-          modernes, performantes et élégantes. J'accompagne les entreprises et
-          projets dans la réalisation de sites web sur mesure, alliant design,
-          performance et accessibilité.
-        </p>
-      </div>
-    </section>
+    <!-- 🏠 HERO -->
+    <section
+      id="accueil"
+        class="vh-100 d-flex align-items-center   bg-primary text-white text-center"
+      >
 
-    <!-- 🧾 Présentation -->
-    <section class="py-5">
-      <div class="container text-center">
-        <div class="card mx-auto" style="max-width: 350px">
-          <img
-            src="profil.jpg"
-            class="card-img-top"
-            alt="Photo de profil Moamed-Gazali"
-          />
-          <div class="card-body">
-            <h5 class="card-title"><strong>Mohamed-Gazali</strong></h5>
-            <p class="card-text">
-              <strong>Développeur Front-End & Web Designer</strong>
-            </p>
-            <p>
-              <strong>Email :</strong>
-              <a href="mailto:idrissamohamed68@gmail.com"
-                >idrissamohamed68@gmail.com</a
-              >
-            </p>
-            <a
-              href="https://wa.me/22791167898"
-              class="btn btn-success d-inline-flex align-items-center gap-2"
-              target="_blank"
-            >
-              <img
-                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg"
-                alt="WhatsApp"
-                width="20"
-                height="20"
-              />
-              +227 91 16 78 98
-            </a>
-          </div>
+      <div class="container">
+        <h1 class="display-4 fw-bold">Développeur Web & Logiciel</h1>
+        <p class="lead mt-3">
+          Python • Flask • Tkinter • SQLite • HTML • CSS • Bootstrap, JavaScript (bases)
+        </p>
+        <p class="mt-4">
+          Je conçois des sites web professionnels et des applications de gestion
+          performantes pour entreprises et commerces.
+        </p>
+        <div class="mt-4">
+          <a href="#projets" class="btn btn-light btn-lg me-2"
+            >Voir mes projets</a
+          >
+          <a href="#contact" class="btn btn-outline-light btn-lg"
+            >Me contacter</a
+          >
         </div>
       </div>
     </section>
 
-    <!-- 🧑‍💻 Projets -->
-    <section id="projets" class="py-5 bg-white fade-in">
+    <!-- 🧑‍💻 PROJETS -->
+    <section id="projets" class="py-5 fade-in">
       <div class="container">
-        <h2 class="text-center mb-4">Mes Projets</h2>
+        <h2 class="text-center mb-5">Projets Réalisés</h2>
         <div class="row g-4">
           <div class="col-md-4">
-            <div class="card h-100 shadow">
+            <div class="card shadow project-card d-flex flex-column">
               <div class="card-body">
-                <h5 class="card-title">Carte de Présentation</h5>
+                <h5 class="card-title">Site Web – Orphelinat</h5>
                 <p class="card-text">
-                  Mon tout premier projet en HTML & CSS avec Flexbox.
+                  Site vitrine conçu pour un orphelinat afin de présenter ses
+                  actions et faciliter la communication.
                 </p>
-                <a href="#" class="btn btn-outline-primary">Voir</a>
+                <span class="badge bg-secondary">HTML</span>
+                <span class="badge bg-secondary">CSS</span>
+                <span class="badge bg-success">Bootstrap</span>
+                <div class="mt-3">
+                  <a
+                    href="https://OuwarMarayu.netlify.app"
+                    target="_blank"
+                    class="btn btn-outline-primary btn-sm"
+                  >
+                    Voir le site
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Projet Restaurant 1 -->
           <div class="col-md-4">
-            <div class="card h-100 shadow">
+            <div class="card shadow project-card d-flex flex-column">
               <div class="card-body">
-                <h5 class="card-title">Formulaire d'inscription</h5>
+                <h5 class="card-title">Site Web – French Tacos</h5>
                 <p class="card-text">
-                  Formulaire moderne, clair et responsive.
+                  Site vitrine professionnel pour restaurant.
                 </p>
-                <a href="#" class="btn btn-outline-primary">Voir</a>
+                <ul>
+                  <li>Menu en ligne</li>
+                  <li>Contact WhatsApp</li>
+                  <li>Design responsive</li>
+                </ul>
+                <span class="badge bg-primary">HTML</span>
+                <span class="badge bg-secondary">CSS</span>
+                <span class="badge bg-success">Bootstrap</span>
+                <span class="badge bg-success">JavaScript ( Bases)</span>
+                <div class="mt-3">
+                <a
+                  href="https://frenchtacos01.netlify.app"
+                  target="_blank"
+                  class="btn btn-outline-primary btn-sm"
+                >
+                  Voir le site
+                </a>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Projet Restaurant 2 -->
           <div class="col-md-4">
-            <div class="card h-100 shadow">
+            <div class="card shadow project-card d-flex flex-column">
               <div class="card-body">
-                <h5 class="card-title">Page d'accueil landing</h5>
-                <p class="card-text">Une landing page simple et impactante.</p>
-                <a href="#" class="btn btn-outline-primary">Voir</a>
+                <h5 class="card-title">Site Web – Restaurant Dragon D'or</h5>
+                <p class="card-text">
+                  Site moderne avec galerie et informations pratiques.
+                </p>
+                <ul>
+                  <li>PWA - Restaurant Dragon D'or</li>
+                  <li>Type : Progressive Web App</li>
+                  <li>Installation sur mobile et ordinateur</li>
+                  <li>Navigation hors ligne (selon config)</li>
+                  <li>Interface moderne</li>
+                  <li>Galerie d'images</li>
+                  <li>Localisation</li>
+                  <li>Interface moderne</li>
+                </ul>
+                <span class="badge bg-primary">HTML</span>
+                <span class="badge bg-secondary">CSS</span>
+                <span class="badge bg-warning text-dark">JavaScript</span>
+                <div class="mt-3">
+                <a
+                  href="https://RestaurantDragondor.netlify.app"
+                  target="_blank"
+                  class="btn btn-outline-primary btn-sm"
+                >
+                  Voir le site
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logiciel -->
+          <div class="col-md-4">
+            <div class="card shadow project-card d-flex flex-column">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Logiciel de Gestion de Stock
+                  <span class="badge bg-warning text-dark">En cours</span>
+                </h5>
+                <p class="card-text">
+                  Application desktop de gestionnaire de tâches (usage bureau).
+                </p>
+                <ul>
+                  <li>Gestion des tâches</li>
+                  <li>Base de données locale</li>
+                  <li>Interface graphique</li>
+                </ul>
+                <span class="badge bg-success">Python</span>
+                <span class="badge bg-info text-dark">Tkinter</span>
+                <span class="badge bg-info text-dark">Flask</span>
+                <span class="badge bg-dark">SQLite</span>
               </div>
             </div>
           </div>
@@ -153,115 +214,94 @@
       </div>
     </section>
 
-    <!-- 📬 Contact -->
-    <section id="contact" class="py-5 fade-in bg-light">
-      <div class="container">
-        <h2 class="text-center mb-4">M'envoyer un Mail</h2>
-        <form
-          action="https://formspree.io/f/mvgqreye"
-          method="POST"
-          class="mx-auto"
-          style="max-width: 600px"
-        >
-          <div class="mb-3">
-            <label for="nom" class="form-label">Nom</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nom"
-              name="nom"
-              required
-            />
+    <!-- 🧠 COMPÉTENCES -->
+    <section id="competences" class="py-5 bg-white fade-in">
+      <div class="container text-center">
+        <h2 class="mb-4">Compétences</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Front-End</h5>
+            <p>HTML • CSS • Bootstrap • JavaScript</p>
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Adresse Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              required
-            />
+          <div class="col-md-4">
+            <h5>Back-End / Logiciel</h5>
+            <p>Python • Flask • Tkinter • SQLite</p>
           </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea
-              class="form-control"
-              id="message"
-              name="message"
-              rows="5"
-              required
-            ></textarea>
+          <div class="col-md-4">
+            <h5>Outils</h5>
+            <p>Git • GitHub • VS Code • Figma</p>
           </div>
-          <input type="text" name="_gotcha" style="display: none" />
-          <input
-            type="hidden"
-            name="_redirect"
-            value="https://mohamed-gazali.github.io/portfolio-Mohamed-Gazali/merci.html"
-          />
-          <button type="submit" class="btn btn-primary w-100">Envoyer</button>
-        </form>
+        </div>
       </div>
     </section>
 
-    <!-- ℹ️ À propos -->
-    <section id="apropos" class="py-5 bg-white fade-in">
+    <!-- ℹ️ À PROPOS -->
+    <section id="apropos" class="py-5 fade-in">
       <div class="container text-center">
-        <h2 class="mb-3">À propos</h2>
-        <p class="lead">
-          Je suis un développeur web en pleine évolution, passionné par la
-          création d’interfaces modernes, accessibles et intuitives. J’accorde
-          une grande importance à l'interface et à l’expérience utilisateur
-          (UI/UX) mais aussi et surtout à l’optimisation de la performance. Mon
-          objectif est de proposer des solutions digitales élégantes et
-          efficaces, tout en continuant à me former sur les dernières
-          technologies du web.
+        <h2>À propos</h2>
+        <p class="lead mt-3">
+          Développeur web & logiciel passionné par la création de solutions
+          digitales utiles. Je développe des sites web professionnels et des
+          applications de gestion adaptées aux besoins des entreprises.
+        </p>
+        <p>
+          Actuellement spécialisé en Python, Flask, Tkinter et SQLite, je suis
+          disponible pour missions freelance et opportunités professionnelles.
         </p>
       </div>
     </section>
 
-    <!-- 📜 Script -->
+    <!-- 📬 CONTACT -->
+    <section id="contact" class="py-5 bg-dark text-white fade-in">
+      <div class="container text-center">
+        <h2>Contact</h2>
+        <p class="mt-3">
+          Disponible pour missions freelance et opportunités professionnelles
+        </p>
+        <p>
+          📧
+          <a href="mailto:idrissamohamed68@gmail.com" class="text-white">
+            idrissamohamed68@gmail.com
+          </a>
+        </p>
+        <p>
+          <a href="https://www.facebook.com/Développeur web" class="text-white  mx-2" target="_blank">
+          <i class="fab fa-facebook fa-2x"></i>
+          </a>
+          <a href="https://github.com/" class="text-white mx-2"
+            ><i class="fab fa-github fa-2x"></i
+          ></a>
+          <a href="https://www.linkedin.com/" class="text-white mx-2"
+            ><i class="fab fa-linkedin fa-2x"></i
+          ></a>
+          <a href="https://wa.me/22791167898" class="text-white mx-2"
+            ><i class="fab fa-whatsapp fa-2x"></i
+          ></a>
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white text-center py-3">
+      © 2025 Mohamed-Gazali — Tous droits réservés
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       const faders = document.querySelectorAll(".fade-in");
-      const appearOptions = { threshold: 0.2 };
-      const appearOnScroll = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("show");
-          obs.unobserve(entry.target);
-        });
-      }, appearOptions);
-      faders.forEach((el) => appearOnScroll.observe(el));
-    </script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
 
-    <!-- ⚫ Footer -->
-    <footer class="bg-dark text-white py-4 text-center">
-      <p class="mb-1">&copy; 2025 Mohamed-Gazali — Tous droits réservés.</p>
-      <p>
-        Suivez-moi sur :
-        <a
-          href="https://www.facebook.com/"
-          class="text-white mx-2"
-          target="_blank"
-          ><i class="fab fa-facebook fa-lg"></i
-        ></a>
-        <a
-          href="https://wa.me/22791167898"
-          class="text-white mx-2"
-          target="_blank"
-          ><i class="fab fa-whatsapp fa-lg"></i
-        ></a>
-        <a
-          href="https://www.linkedin.com/"
-          class="text-white mx-2"
-          target="_blank"
-          ><i class="fab fa-linkedin fa-lg"></i
-        ></a>
-        <a href="https://github.com/" class="text-white mx-2" target="_blank"
-          ><i class="fab fa-github fa-lg"></i
-        ></a>
-      </p>
-    </footer>
+      faders.forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>

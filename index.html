@@ -1,584 +1,1407 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mohamed-Gazali — Développeur Full-Stack & IA</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mohamed-Gazali — Développeur Full-Stack & IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    :root {
-      --bg:        #080c12;
-      --bg2:       #0d1320;
-      --bg3:       #111827;
-      --border:    rgba(255,255,255,0.07);
-      --accent:    #00d4ff;
-      --accent2:   #7c3aed;
-      --accent3:   #10b981;
-      --text:      #e8edf5;
-      --muted:     #64748b;
-      --card:      rgba(255,255,255,0.03);
-      --font-head: 'Syne', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-    }
+      :root {
+        --bg: #080c12;
+        --bg2: #0d1320;
+        --bg3: #111827;
+        --border: rgba(255, 255, 255, 0.07);
+        --accent: #00d4ff;
+        --accent2: #7c3aed;
+        --accent3: #10b981;
+        --text: #e8edf5;
+        --muted: #64748b;
+        --card: rgba(255, 255, 255, 0.03);
+        --font-head: "Syne", sans-serif;
+        --font-body: "DM Sans", sans-serif;
+      }
 
-    html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        font-weight: 300;
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
 
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
-    }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.4;
+      }
 
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 2px;
+      }
 
-    /* ── NAVBAR ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 1.2rem 0;
-      transition: all 0.3s ease;
-    }
-    nav.scrolled {
-      background: rgba(8,12,18,0.92);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 0.8rem 0;
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: var(--font-head); font-weight: 800; font-size: 1.2rem;
-      color: var(--text); text-decoration: none; letter-spacing: -0.02em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 0.88rem;
-      font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
+      /* ── NAVBAR ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 1.2rem 0;
+        transition: all 0.3s ease;
+      }
+      nav.scrolled {
+        background: rgba(8, 12, 18, 0.92);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 0.8rem 0;
+      }
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: var(--font-head);
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh; display: flex; align-items: center;
-      position: relative; overflow: hidden; padding: 0 2rem;
-    }
-    #hero::before {
-      content: ''; position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
-    }
-    @keyframes gridMove {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(60px); }
-    }
-    .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none; }
-    .blob-1 { width:600px; height:600px; background:var(--accent); top:-200px; right:-100px; animation: blobFloat 8s ease-in-out infinite; }
-    .blob-2 { width:400px; height:400px; background:var(--accent2); bottom:-100px; left:-100px; animation: blobFloat 10s ease-in-out infinite reverse; }
-    @keyframes blobFloat {
-      0%,100% { transform: translate(0,0) scale(1); }
-      50% { transform: translate(30px,-30px) scale(1.05); }
-    }
+      /* ── HERO ── */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding: 0 2rem;
+      }
+      #hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        animation: gridMove 20s linear infinite;
+      }
+      @keyframes gridMove {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(60px);
+        }
+      }
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.12;
+        pointer-events: none;
+      }
+      .blob-1 {
+        width: 600px;
+        height: 600px;
+        background: var(--accent);
+        top: -200px;
+        right: -100px;
+        animation: blobFloat 8s ease-in-out infinite;
+      }
+      .blob-2 {
+        width: 400px;
+        height: 400px;
+        background: var(--accent2);
+        bottom: -100px;
+        left: -100px;
+        animation: blobFloat 10s ease-in-out infinite reverse;
+      }
+      @keyframes blobFloat {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(30px, -30px) scale(1.05);
+        }
+      }
 
-    .hero-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
-      color: var(--accent); padding: 0.4rem 1rem; border-radius: 100px;
-      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; margin-bottom: 1.8rem;
-    }
-    .hero-tag::before {
-      content: ''; width: 6px; height: 6px; background: var(--accent);
-      border-radius: 50%; animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50% { opacity:0.4; transform:scale(0.8); }
-    }
-    .hero-title {
-      font-family: var(--font-head);
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      font-weight: 800; line-height: 1.0; letter-spacing: -0.04em; margin-bottom: 1.5rem;
-    }
-    .hero-title .line2 { -webkit-text-stroke: 1px rgba(255,255,255,0.3); color: transparent; }
-    .hero-title .accent { color: var(--accent); }
-    .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 540px; margin-bottom: 2.5rem; font-weight: 300; }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary-custom {
-      background: var(--accent); color: var(--bg); padding: 0.85rem 2rem;
-      border-radius: 6px; font-weight: 600; font-size: 0.9rem;
-      text-decoration: none; transition: all 0.2s; font-family: var(--font-head);
-    }
-    .btn-primary-custom:hover { background:#fff; transform:translateY(-2px); box-shadow:0 8px 30px rgba(0,212,255,0.3); }
-    .btn-outline-custom {
-      border: 1px solid var(--border); color: var(--text); padding: 0.85rem 2rem;
-      border-radius: 6px; font-weight: 400; font-size: 0.9rem;
-      text-decoration: none; transition: all 0.2s; background: transparent;
-    }
-    .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-stats { display:flex; gap:3rem; margin-top:4rem; padding-top:2rem; border-top:1px solid var(--border); }
-    .stat-num { font-family:var(--font-head); font-size:2rem; font-weight:800; color:var(--accent); }
-    .stat-label { font-size:0.8rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
+      .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0, 212, 255, 0.08);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        color: var(--accent);
+        padding: 0.4rem 1rem;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1.8rem;
+      }
+      .hero-tag::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.8);
+        }
+      }
+      .hero-title {
+        font-family: var(--font-head);
+        font-size: clamp(3rem, 7vw, 6.5rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        margin-bottom: 1.5rem;
+      }
+      .hero-title .line2 {
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+        color: transparent;
+      }
+      .hero-title .accent {
+        color: var(--accent);
+      }
+      .hero-sub {
+        font-size: 1.15rem;
+        color: var(--muted);
+        max-width: 540px;
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .btn-primary-custom {
+        background: var(--accent);
+        color: var(--bg);
+        padding: 0.85rem 2rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        font-family: var(--font-head);
+      }
+      .btn-primary-custom:hover {
+        background: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 212, 255, 0.3);
+      }
+      .btn-outline-custom {
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 0.85rem 2rem;
+        border-radius: 6px;
+        font-weight: 400;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.2s;
+        background: transparent;
+      }
+      .btn-outline-custom:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .hero-stats {
+        display: flex;
+        gap: 3rem;
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+      }
+      .stat-num {
+        font-family: var(--font-head);
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--accent);
+      }
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
 
-    /* ── SECTIONS ── */
-    section { padding: 7rem 2rem; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--accent); font-weight:500; margin-bottom:0.8rem; }
-    .section-title { font-family:var(--font-head); font-size:clamp(2rem,4vw,3.2rem); font-weight:800; letter-spacing:-0.03em; margin-bottom:1rem; }
-    .section-desc { color:var(--muted); max-width:540px; font-size:1rem; margin-bottom:4rem; }
+      /* ── SECTIONS ── */
+      section {
+        padding: 7rem 2rem;
+      }
+      .section-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--accent);
+        font-weight: 500;
+        margin-bottom: 0.8rem;
+      }
+      .section-title {
+        font-family: var(--font-head);
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 1rem;
+      }
+      .section-desc {
+        color: var(--muted);
+        max-width: 540px;
+        font-size: 1rem;
+        margin-bottom: 4rem;
+      }
 
-    /* ── PROJETS ── */
-    #projets { background: var(--bg2); }
-    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:1.5rem; }
-    .project-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 2rem; transition: all 0.3s ease;
-      position: relative; overflow: hidden;
-    }
-    .project-card::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:2px;
-      background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
-      opacity:0; transition:opacity 0.3s;
-    }
-    .project-card:hover { border-color:rgba(255,255,255,0.12); transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,0.4); }
-    .project-card:hover::before { opacity:1; }
-    .project-card.featured {
-      grid-column: span 2;
-      background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.05));
-      border-color: rgba(0,212,255,0.15);
-    }
-    @media (max-width:768px) { .project-card.featured { grid-column: span 1; } }
+      /* ── PROJETS ── */
+      #projets {
+        background: var(--bg2);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 1.5rem;
+      }
+      .project-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--card-accent, var(--accent)),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .project-card:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      }
+      .project-card:hover::before {
+        opacity: 1;
+      }
+      .project-card.featured {
+        grid-column: span 2;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 255, 0.05),
+          rgba(124, 58, 237, 0.05)
+        );
+        border-color: rgba(0, 212, 255, 0.15);
+      }
+      @media (max-width: 768px) {
+        .project-card.featured {
+          grid-column: span 1;
+        }
+      }
 
-    .project-icon { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1.2rem; }
-    .project-status { display:inline-block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; padding:0.2rem 0.7rem; border-radius:100px; font-weight:600; margin-bottom:1rem; }
-    .status-live { background:rgba(16,185,129,0.15); color:var(--accent3); border:1px solid rgba(16,185,129,0.3); }
-    .status-wip  { background:rgba(245,158,11,0.15); color:#f59e0b; border:1px solid rgba(245,158,11,0.3); }
-    .project-title { font-family:var(--font-head); font-size:1.2rem; font-weight:700; margin-bottom:0.7rem; letter-spacing:-0.02em; }
-    .project-desc { color:var(--muted); font-size:0.9rem; margin-bottom:1.2rem; line-height:1.6; }
-    .project-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.5rem; }
-    .tag { background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--muted); padding:0.2rem 0.7rem; border-radius:4px; font-size:0.75rem; }
-    .tag.highlight { background:rgba(0,212,255,0.08); color:var(--accent); border-color:rgba(0,212,255,0.2); }
-    .project-links { display:flex; gap:0.8rem; }
-    .project-link { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.82rem; color:var(--muted); text-decoration:none; transition:color 0.2s; }
-    .project-link:hover { color:var(--accent); }
+      .project-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
+      }
+      .project-status {
+        display: inline-block;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 0.2rem 0.7rem;
+        border-radius: 100px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .status-live {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--accent3);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+      .status-wip {
+        background: rgba(245, 158, 11, 0.15);
+        color: #f59e0b;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .project-title {
+        font-family: var(--font-head);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+        letter-spacing: -0.02em;
+      }
+      .project-desc {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.6;
+      }
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.5rem;
+      }
+      .tag {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        padding: 0.2rem 0.7rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+      }
+      .tag.highlight {
+        background: rgba(0, 212, 255, 0.08);
+        color: var(--accent);
+        border-color: rgba(0, 212, 255, 0.2);
+      }
+      .project-links {
+        display: flex;
+        gap: 0.8rem;
+      }
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .project-link:hover {
+        color: var(--accent);
+      }
 
-    /* ── COMPÉTENCES ── */
-    #competences { background: var(--bg); }
-    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; }
-    .skill-category { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2rem; transition:border-color 0.3s; }
-    .skill-category:hover { border-color:rgba(255,255,255,0.12); }
-    .skill-cat-icon { width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; margin-bottom:1rem; }
-    .skill-cat-title { font-family:var(--font-head); font-size:1rem; font-weight:700; margin-bottom:1.2rem; letter-spacing:-0.01em; }
-    .skill-item { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.9rem; }
-    .skill-name { font-size:0.88rem; color:var(--text); }
-    .skill-bar-wrap { width:100px; height:4px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden; }
-    .skill-bar { height:100%; border-radius:2px; transition:width 1.5s cubic-bezier(0.4,0,0.2,1); width:0; }
-    .skill-bar.animated { width:var(--w); }
+      /* ── COMPÉTENCES ── */
+      #competences {
+        background: var(--bg);
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .skill-category {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem;
+        transition: border-color 0.3s;
+      }
+      .skill-category:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .skill-cat-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+      .skill-cat-title {
+        font-family: var(--font-head);
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+        letter-spacing: -0.01em;
+      }
+      .skill-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.9rem;
+      }
+      .skill-name {
+        font-size: 0.88rem;
+        color: var(--text);
+      }
+      .skill-bar-wrap {
+        width: 100px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .skill-bar {
+        height: 100%;
+        border-radius: 2px;
+        transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 0;
+      }
+      .skill-bar.animated {
+        width: var(--w);
+      }
 
-    /* ── À PROPOS ── */
-    #apropos { background: var(--bg2); }
-    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-    @media (max-width:768px) { .about-grid { grid-template-columns:1fr; gap:2rem; } }
-    .about-text p { color:var(--muted); margin-bottom:1rem; font-size:0.95rem; }
-    .about-text p strong { color:var(--text); font-weight:500; }
-    .about-highlights { display:flex; flex-direction:column; gap:1rem; }
-    .highlight-item { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.2rem 1.5rem; display:flex; align-items:flex-start; gap:1rem; transition:border-color 0.3s; }
-    .highlight-item:hover { border-color:rgba(0,212,255,0.2); }
-    .highlight-icon { font-size:1.2rem; margin-top:0.1rem; flex-shrink:0; }
-    .highlight-title { font-weight:600; font-size:0.9rem; margin-bottom:0.2rem; }
-    .highlight-desc { font-size:0.82rem; color:var(--muted); }
+      /* ── À PROPOS ── */
+      #apropos {
+        background: var(--bg2);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      @media (max-width: 768px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+      .about-text p {
+        color: var(--muted);
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+      }
+      .about-text p strong {
+        color: var(--text);
+        font-weight: 500;
+      }
+      .about-highlights {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .highlight-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.2rem 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        transition: border-color 0.3s;
+      }
+      .highlight-item:hover {
+        border-color: rgba(0, 212, 255, 0.2);
+      }
+      .highlight-icon {
+        font-size: 1.2rem;
+        margin-top: 0.1rem;
+        flex-shrink: 0;
+      }
+      .highlight-title {
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem;
+      }
+      .highlight-desc {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
 
-    /* ── CONTACT ── */
-    #contact { background: var(--bg); }
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
-    @media (max-width:768px) { .contact-grid { grid-template-columns:1fr; gap:2rem; } }
-    .contact-info p { color:var(--muted); font-size:0.95rem; margin-bottom:2rem; }
-    .contact-links { display:flex; flex-direction:column; gap:1rem; }
-    .contact-link { display:flex; align-items:center; gap:1rem; color:var(--muted); text-decoration:none; font-size:0.9rem; padding:0.8rem 1rem; border:1px solid var(--border); border-radius:8px; transition:all 0.2s; }
-    .contact-link:hover { color:var(--accent); border-color:rgba(0,212,255,0.2); background:rgba(0,212,255,0.04); }
-    .contact-link i { width:18px; text-align:center; }
-    .contact-cta { background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(124,58,237,0.08)); border:1px solid rgba(0,212,255,0.15); border-radius:20px; padding:3rem; text-align:center; }
-    .contact-cta h3 { font-family:var(--font-head); font-size:1.6rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:0.8rem; }
-    .contact-cta p { color:var(--muted); font-size:0.9rem; margin-bottom:1.8rem; }
+      /* ── CONTACT ── */
+      #contact {
+        background: var(--bg);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+      @media (max-width: 768px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+      .contact-info p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .contact-link:hover {
+        color: var(--accent);
+        border-color: rgba(0, 212, 255, 0.2);
+        background: rgba(0, 212, 255, 0.04);
+      }
+      .contact-link i {
+        width: 18px;
+        text-align: center;
+      }
+      .contact-cta {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 255, 0.08),
+          rgba(124, 58, 237, 0.08)
+        );
+        border: 1px solid rgba(0, 212, 255, 0.15);
+        border-radius: 20px;
+        padding: 3rem;
+        text-align: center;
+      }
+      .contact-cta h3 {
+        font-family: var(--font-head);
+        font-size: 1.6rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.8rem;
+      }
+      .contact-cta p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-bottom: 1.8rem;
+      }
 
-    /* ── FOOTER ── */
-    footer { background:var(--bg); border-top:1px solid var(--border); padding:2rem; text-align:center; color:var(--muted); font-size:0.82rem; }
-    footer span { color:var(--accent); }
+      /* ── FOOTER ── */
+      footer {
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        padding: 2rem;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+      footer span {
+        color: var(--accent);
+      }
 
-    /* ── ANIMATIONS ── */
-    .reveal { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    .reveal-delay-1 { transition-delay:0.1s; }
-    .reveal-delay-2 { transition-delay:0.2s; }
-    .reveal-delay-3 { transition-delay:0.3s; }
+      /* ── ANIMATIONS ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      .reveal-delay-3 {
+        transition-delay: 0.3s;
+      }
 
-    /* ── MOBILE NAV ── */
-    .nav-toggle { display:none; background:none; border:1px solid var(--border); color:var(--text); padding:0.4rem 0.7rem; border-radius:6px; cursor:pointer; font-size:1rem; }
-    @media (max-width:768px) {
-      .nav-toggle { display:block; }
-      .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:rgba(8,12,18,0.97); backdrop-filter:blur(20px); flex-direction:column; padding:1.5rem 2rem; gap:1.2rem; border-bottom:1px solid var(--border); }
-      .nav-links.open { display:flex; }
-      .hero-stats { flex-wrap:wrap; gap:1.5rem; }
-    }
-  </style>
-</head>
+      /* ── MOBILE NAV ── */
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 0.4rem 0.7rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      @media (max-width: 768px) {
+        .nav-toggle {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: rgba(8, 12, 18, 0.97);
+          backdrop-filter: blur(20px);
+          flex-direction: column;
+          padding: 1.5rem 2rem;
+          gap: 1.2rem;
+          border-bottom: 1px solid var(--border);
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .hero-stats {
+          flex-wrap: wrap;
+          gap: 1.5rem;
+        }
+      }
+    </style>
+  </head>
 
-<body>
-
-<!-- ── NAVBAR ── -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a class="nav-logo" href="#">MG<span>.</span></a>
-    <button class="nav-toggle" onclick="toggleNav()"><i class="fas fa-bars"></i></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#hero"        onclick="closeNav()">Accueil</a></li>
-      <li><a href="#projets"     onclick="closeNav()">Projets</a></li>
-      <li><a href="#competences" onclick="closeNav()">Compétences</a></li>
-      <li><a href="#apropos"     onclick="closeNav()">À propos</a></li>
-      <li><a href="#contact"     onclick="closeNav()">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- ── HERO ── -->
-<section id="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Disponible pour un stage</div>
-    <h1 class="hero-title">
-      Mohamed-Gazali<br>
-      <span class="line2">Idrissa</span><br>
-      <span class="accent">Djibrilla</span>
-    </h1>
-    <p class="hero-sub">
-      Développeur Full-Stack Python & Mobile Flutter — je construis des applications web complètes avec intégration IA, déployées en production.
-    </p>
-    <div class="hero-btns">
-      <a href="#projets" class="btn-primary-custom">Voir mes projets</a>
-      <a href="#contact" class="btn-outline-custom">Me contacter</a>
-    </div>
-    <div class="hero-stats">
-      <div>
-        <div class="stat-num">6+</div>
-        <div class="stat-label">Projets livrés</div>
+  <body>
+    <!-- ── NAVBAR ── -->
+    <nav id="navbar">
+      <div class="nav-inner">
+        <a class="nav-logo" href="#">MG<span>.</span></a>
+        <button class="nav-toggle" onclick="toggleNav()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#hero" onclick="closeNav()">Accueil</a></li>
+          <li><a href="#projets" onclick="closeNav()">Projets</a></li>
+          <li><a href="#competences" onclick="closeNav()">Compétences</a></li>
+          <li><a href="#apropos" onclick="closeNav()">À propos</a></li>
+          <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+        </ul>
       </div>
-      <div>
-        <div class="stat-num">4</div>
-        <div class="stat-label">Apps déployées</div>
-      </div>
-      <div>
-        <div class="stat-num">IA</div>
-        <div class="stat-label">Intégrée en prod</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </nav>
 
-<!-- ── PROJETS ── -->
-<section id="projets">
-  <div class="section-inner">
-    <p class="section-label reveal">Réalisations</p>
-    <h2 class="section-title reveal">Projets & Applications</h2>
-    <p class="section-desc reveal">Des projets réels, déployés en production, couvrant le web, le logiciel et le mobile.</p>
-
-    <div class="projects-grid">
-
-      <!-- CliniqueApp — NOUVEAU FEATURED -->
-      <div class="project-card featured reveal" style="--card-accent:#10b981;">
-        <div class="project-icon" style="background:rgba(16,185,129,0.1);color:#10b981;">🏥</div>
-        <span class="project-status status-live">En ligne</span>
-        <h3 class="project-title">CliniqueApp — Système de gestion de clinique</h3>
-        <p class="project-desc">
-          Application web full-stack de gestion de clinique privée : patients, médecins, rendez-vous, consultations, ordonnances. Dashboard avec statistiques en temps réel, authentification JWT par rôles (admin/médecin/secrétaire), sidebar navigation moderne. Backend FastAPI + Frontend React déployés en production.
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="hero-content">
+        <div class="hero-tag">Disponible pour un stage</div>
+        <h1 class="hero-title">
+          Mohamed-Gazali<br />
+          <span class="line2">Idrissa</span><br />
+          <span class="accent">Djibrilla</span>
+        </h1>
+        <p class="hero-sub">
+          Développeur Full-Stack Python & Mobile Flutter — je construis des
+          applications web complètes avec intégration IA, déployées en
+          production.
         </p>
-        <div class="project-tags">
-          <span class="tag highlight">FastAPI</span>
-          <span class="tag highlight">React</span>
-          <span class="tag highlight">Neon PostgreSQL</span>
-          <span class="tag">JWT + bcrypt</span>
-          <span class="tag">Vite</span>
-          <span class="tag">Render</span>
-          <span class="tag">Vercel</span>
+        <div class="hero-btns">
+          <a href="#projets" class="btn-primary-custom">Voir mes projets</a>
+          <a href="#contact" class="btn-outline-custom">Me contacter</a>
         </div>
-        <div class="project-links">
-          <a href="LIEN_VERCEL_ICI" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> App live</a>
-          <a href="https://github.com/Mohamed-Gazali/clinique-app" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">6+</div>
+            <div class="stat-label">Projets livrés</div>
+          </div>
+          <div>
+            <div class="stat-num">4</div>
+            <div class="stat-label">Apps déployées</div>
+          </div>
+          <div>
+            <div class="stat-num">IA</div>
+            <div class="stat-label">Intégrée en prod</div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Team Manager -->
-      <div class="project-card reveal reveal-delay-1" style="--card-accent:#00d4ff;">
-        <div class="project-icon" style="background:rgba(0,212,255,0.1);color:#00d4ff;">🚀</div>
-        <span class="project-status status-live">En ligne</span>
-        <h3 class="project-title">Team Manager — Gestion d'équipe avec IA</h3>
-        <p class="project-desc">
-          Application web full-stack : tableau Kanban, auth JWT, création de tâches via IA GPT-3.5 en langage naturel, PostgreSQL, Docker, 19 tests pytest.
+    <!-- ── PROJETS ── -->
+    <section id="projets">
+      <div class="section-inner">
+        <p class="section-label reveal">Réalisations</p>
+        <h2 class="section-title reveal">Projets & Applications</h2>
+        <p class="section-desc reveal">
+          Des projets réels, déployés en production, couvrant le web, le
+          logiciel et le mobile.
         </p>
-        <div class="project-tags">
-          <span class="tag highlight">FastAPI</span>
-          <span class="tag highlight">OpenAI GPT-3.5</span>
-          <span class="tag">Streamlit</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Docker</span>
-          <span class="tag">pytest</span>
-        </div>
-        <div class="project-links">
-          <a href="https://team-manager-yjp4ykafyv4phfmpot6h6h.streamlit.app/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> App live</a>
-          <a href="https://github.com/Mohamed-Gazali/Team-Manager" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+
+        <div class="projects-grid">
+          <!-- CliniqueApp — NOUVEAU FEATURED -->
+          <div
+            class="project-card featured reveal"
+            style="--card-accent: #10b981"
+          >
+            <div
+              class="project-icon"
+              style="background: rgba(16, 185, 129, 0.1); color: #10b981"
+            >
+              🏥
+            </div>
+            <span class="project-status status-live">En ligne</span>
+            <h3 class="project-title">
+              CliniqueApp — Système de gestion de clinique
+            </h3>
+            <p class="project-desc">
+              Application web full-stack de gestion de clinique privée :
+              patients, médecins, rendez-vous, consultations, ordonnances.
+              Dashboard avec statistiques en temps réel, authentification JWT
+              par rôles (admin/médecin/secrétaire), sidebar navigation moderne.
+              Backend FastAPI + Frontend React déployés en production.
+            </p>
+            <div class="project-tags">
+              <span class="tag highlight">FastAPI</span>
+              <span class="tag highlight">React</span>
+              <span class="tag highlight">Neon PostgreSQL</span>
+              <span class="tag">JWT + bcrypt</span>
+              <span class="tag">Vite</span>
+              <span class="tag">Render</span>
+              <span class="tag">Vercel</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://clinique-app-rouge.vercel.app/"
+                class="project-link"
+                target="_blank"
+                ><i class="fas fa-external-link-alt"></i> App live</a
+              >
+              <a
+                href="https://github.com/Mohamed-Gazali/clinique-app"
+                class="project-link"
+                target="_blank"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+            </div>
+          </div>
+
+          <!-- Team Manager -->
+          <div
+            class="project-card reveal reveal-delay-1"
+            style="--card-accent: #00d4ff"
+          >
+            <div
+              class="project-icon"
+              style="background: rgba(0, 212, 255, 0.1); color: #00d4ff"
+            >
+              🚀
+            </div>
+            <span class="project-status status-live">En ligne</span>
+            <h3 class="project-title">
+              Team Manager — Gestion d'équipe avec IA
+            </h3>
+            <p class="project-desc">
+              Application web full-stack : tableau Kanban, auth JWT, création de
+              tâches via IA GPT-3.5 en langage naturel, PostgreSQL, Docker, 19
+              tests pytest.
+            </p>
+            <div class="project-tags">
+              <span class="tag highlight">FastAPI</span>
+              <span class="tag highlight">OpenAI GPT-3.5</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Docker</span>
+              <span class="tag">pytest</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://team-manager-yjp4ykafyv4phfmpot6h6h.streamlit.app/"
+                class="project-link"
+                target="_blank"
+                ><i class="fas fa-external-link-alt"></i> App live</a
+              >
+              <a
+                href="https://github.com/Mohamed-Gazali/Team-Manager"
+                class="project-link"
+                target="_blank"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+            </div>
+          </div>
+
+          <!-- App Flutter -->
+          <div
+            class="project-card reveal reveal-delay-1"
+            style="--card-accent: #7c3aed"
+          >
+            <div
+              class="project-icon"
+              style="background: rgba(124, 58, 237, 0.1); color: #7c3aed"
+            >
+              📱
+            </div>
+            <span class="project-status status-wip">En cours</span>
+            <h3 class="project-title">App Mobile — E-commerce & Dashboard</h3>
+            <p class="project-desc">
+              Application mobile Flutter pour achats en ligne avec dashboard
+              admin pour la gestion des commandes en temps réel. Firebase Auth,
+              Firestore, notifications push.
+            </p>
+            <div class="project-tags">
+              <span class="tag highlight">Flutter</span>
+              <span class="tag highlight">Dart</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Firestore</span>
+              <span class="tag">Dashboard Web</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/Mohamed-Gazali"
+                class="project-link"
+                target="_blank"
+                ><i class="fab fa-github"></i> GitHub</a
+              >
+            </div>
+          </div>
+
+          <!-- PWA Dragon D'or -->
+          <div
+            class="project-card reveal reveal-delay-2"
+            style="--card-accent: #10b981"
+          >
+            <div
+              class="project-icon"
+              style="background: rgba(16, 185, 129, 0.1); color: #10b981"
+            >
+              🍜
+            </div>
+            <span class="project-status status-live">En ligne</span>
+            <h3 class="project-title">PWA Restaurant — Dragon D'or</h3>
+            <p class="project-desc">
+              Progressive Web App installable sur mobile et PC. Galerie,
+              localisation, navigation hors ligne, menu en ligne.
+            </p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag highlight">PWA</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://RestaurantDragondor.netlify.app"
+                class="project-link"
+                target="_blank"
+                ><i class="fas fa-external-link-alt"></i> Voir le site</a
+              >
+            </div>
+          </div>
+
+          <!-- French Tacos -->
+          <div
+            class="project-card reveal reveal-delay-2"
+            style="--card-accent: #f59e0b"
+          >
+            <div
+              class="project-icon"
+              style="background: rgba(245, 158, 11, 0.1); color: #f59e0b"
+            >
+              🌮
+            </div>
+            <span class="project-status status-live">En ligne</span>
+            <h3 class="project-title">Site Web Restaurant — French Tacos</h3>
+            <p class="project-desc">
+              Menu en ligne, commande WhatsApp, design responsive. Interface
+              moderne orientée conversion.
+            </p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://frenchtacos01.netlify.app"
+                class="project-link"
+                target="_blank"
+                ><i class="fas fa-external-link-alt"></i> Voir le site</a
+              >
+            </div>
+          </div>
+
+          <!-- Orphelinat -->
+          <div
+            class="project-card reveal reveal-delay-3"
+            style="--card-accent: #06b6d4"
+          >
+            <div
+              class="project-icon"
+              style="background: rgba(6, 182, 212, 0.1); color: #06b6d4"
+            >
+              🏠
+            </div>
+            <span class="project-status status-live">En ligne</span>
+            <h3 class="project-title">Site Vitrine — Ouwar Marayu</h3>
+            <p class="project-desc">
+              Site vitrine pour un orphelinat — présentation des actions,
+              communication et sensibilisation.
+            </p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Bootstrap</span>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://OuwarMarayu.netlify.app"
+                class="project-link"
+                target="_blank"
+                ><i class="fas fa-external-link-alt"></i> Voir le site</a
+              >
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- App Flutter -->
-      <div class="project-card reveal reveal-delay-1" style="--card-accent:#7c3aed;">
-        <div class="project-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;">📱</div>
-        <span class="project-status status-wip">En cours</span>
-        <h3 class="project-title">App Mobile — E-commerce & Dashboard</h3>
-        <p class="project-desc">
-          Application mobile Flutter pour achats en ligne avec dashboard admin pour la gestion des commandes en temps réel. Firebase Auth, Firestore, notifications push.
+    <!-- ── COMPÉTENCES ── -->
+    <section id="competences">
+      <div class="section-inner">
+        <p class="section-label reveal">Stack technique</p>
+        <h2 class="section-title reveal">Compétences</h2>
+        <p class="section-desc reveal">
+          Des outils maîtrisés en conditions réelles, sur des projets déployés
+          en production.
         </p>
-        <div class="project-tags">
-          <span class="tag highlight">Flutter</span>
-          <span class="tag highlight">Dart</span>
-          <span class="tag">Firebase</span>
-          <span class="tag">Firestore</span>
-          <span class="tag">Dashboard Web</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/Mohamed-Gazali" class="project-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-      </div>
 
-      <!-- PWA Dragon D'or -->
-      <div class="project-card reveal reveal-delay-2" style="--card-accent:#10b981;">
-        <div class="project-icon" style="background:rgba(16,185,129,0.1);color:#10b981;">🍜</div>
-        <span class="project-status status-live">En ligne</span>
-        <h3 class="project-title">PWA Restaurant — Dragon D'or</h3>
-        <p class="project-desc">Progressive Web App installable sur mobile et PC. Galerie, localisation, navigation hors ligne, menu en ligne.</p>
-        <div class="project-tags">
-          <span class="tag">HTML</span>
-          <span class="tag">Tailwind CSS</span>
-          <span class="tag highlight">PWA</span>
-          <span class="tag">JavaScript</span>
-        </div>
-        <div class="project-links">
-          <a href="https://RestaurantDragondor.netlify.app" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Voir le site</a>
-        </div>
-      </div>
+        <div class="skills-grid">
+          <div class="skill-category reveal">
+            <div
+              class="skill-cat-icon"
+              style="background: rgba(0, 212, 255, 0.1); color: #00d4ff"
+            >
+              <i class="fas fa-server"></i>
+            </div>
+            <div class="skill-cat-title">Backend & API</div>
+            <div class="skill-item">
+              <span class="skill-name">FastAPI</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 85%; background: #00d4ff"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 83%; background: #00d4ff"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">PostgreSQL</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 75%; background: #00d4ff"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JWT + bcrypt</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 80%; background: #00d4ff"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">API REST</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 82%; background: #00d4ff"
+                ></div>
+              </div>
+            </div>
+          </div>
 
-      <!-- French Tacos -->
-      <div class="project-card reveal reveal-delay-2" style="--card-accent:#f59e0b;">
-        <div class="project-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b;">🌮</div>
-        <span class="project-status status-live">En ligne</span>
-        <h3 class="project-title">Site Web Restaurant — French Tacos</h3>
-        <p class="project-desc">Menu en ligne, commande WhatsApp, design responsive. Interface moderne orientée conversion.</p>
-        <div class="project-tags">
-          <span class="tag">HTML</span>
-          <span class="tag">Tailwind CSS</span>
-          <span class="tag">JavaScript</span>
-        </div>
-        <div class="project-links">
-          <a href="https://frenchtacos01.netlify.app" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Voir le site</a>
-        </div>
-      </div>
+          <div class="skill-category reveal reveal-delay-1">
+            <div
+              class="skill-cat-icon"
+              style="background: rgba(124, 58, 237, 0.1); color: #7c3aed"
+            >
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="skill-cat-title">Frontend & Mobile</div>
+            <div class="skill-item">
+              <span class="skill-name">React + Vite</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 70%; background: #7c3aed"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Flutter / Dart</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 65%; background: #7c3aed"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">HTML / CSS</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 85%; background: #7c3aed"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Tailwind CSS</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 75%; background: #7c3aed"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 55%; background: #7c3aed"
+                ></div>
+              </div>
+            </div>
+          </div>
 
-      <!-- Orphelinat -->
-      <div class="project-card reveal reveal-delay-3" style="--card-accent:#06b6d4;">
-        <div class="project-icon" style="background:rgba(6,182,212,0.1);color:#06b6d4;">🏠</div>
-        <span class="project-status status-live">En ligne</span>
-        <h3 class="project-title">Site Vitrine — Ouwar Marayu</h3>
-        <p class="project-desc">Site vitrine pour un orphelinat — présentation des actions, communication et sensibilisation.</p>
-        <div class="project-tags">
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">Bootstrap</span>
-        </div>
-        <div class="project-links">
-          <a href="https://OuwarMarayu.netlify.app" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> Voir le site</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── COMPÉTENCES ── -->
-<section id="competences">
-  <div class="section-inner">
-    <p class="section-label reveal">Stack technique</p>
-    <h2 class="section-title reveal">Compétences</h2>
-    <p class="section-desc reveal">Des outils maîtrisés en conditions réelles, sur des projets déployés en production.</p>
-
-    <div class="skills-grid">
-
-      <div class="skill-category reveal">
-        <div class="skill-cat-icon" style="background:rgba(0,212,255,0.1);color:#00d4ff;"><i class="fas fa-server"></i></div>
-        <div class="skill-cat-title">Backend & API</div>
-        <div class="skill-item"><span class="skill-name">FastAPI</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%;background:#00d4ff;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:83%;background:#00d4ff;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">PostgreSQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:75%;background:#00d4ff;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">JWT + bcrypt</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:80%;background:#00d4ff;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">API REST</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:82%;background:#00d4ff;"></div></div></div>
-      </div>
-
-      <div class="skill-category reveal reveal-delay-1">
-        <div class="skill-cat-icon" style="background:rgba(124,58,237,0.1);color:#7c3aed;"><i class="fas fa-mobile-alt"></i></div>
-        <div class="skill-cat-title">Frontend & Mobile</div>
-        <div class="skill-item"><span class="skill-name">React + Vite</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:70%;background:#7c3aed;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Flutter / Dart</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:65%;background:#7c3aed;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">HTML / CSS</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:85%;background:#7c3aed;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Tailwind CSS</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:75%;background:#7c3aed;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:55%;background:#7c3aed;"></div></div></div>
-      </div>
-
-      <div class="skill-category reveal reveal-delay-2">
-        <div class="skill-cat-icon" style="background:rgba(16,185,129,0.1);color:#10b981;"><i class="fas fa-robot"></i></div>
-        <div class="skill-cat-title">IA & DevOps</div>
-        <div class="skill-item"><span class="skill-name">OpenAI API</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:75%;background:#10b981;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Prompt Engineering</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:72%;background:#10b981;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Docker</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:60%;background:#10b981;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Git / GitHub</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:80%;background:#10b981;"></div></div></div>
-        <div class="skill-item"><span class="skill-name">Render / Vercel</span><div class="skill-bar-wrap"><div class="skill-bar" style="--w:78%;background:#10b981;"></div></div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── À PROPOS ── -->
-<section id="apropos">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p class="section-label">À propos</p>
-        <h2 class="section-title">Développeur passionné,<br>orienté solutions</h2>
-        <p>Je suis <strong>Mohamed-Gazali Idrissa Djibrilla</strong>, développeur junior Full-Stack basé au Niger, passionné par la création d'outils numériques utiles et concrets.</p>
-        <p>J'ai construit et déployé en production des <strong>applications web complètes</strong> — Team Manager (FastAPI + Streamlit + IA) et CliniqueApp (FastAPI + React + PostgreSQL) — avec authentification JWT, Docker et tests unitaires.</p>
-        <p>Je développe également une <strong>application mobile Flutter</strong> pour le e-commerce avec Firebase, et je maîtrise le déploiement sur Render, Vercel et Streamlit Cloud.</p>
-        <p>Je suis disponible pour un <strong>stage en développement</strong> (Backend / Full-Stack / IA).</p>
-        <div style="margin-top:2rem;">
-          <a href="mailto:idrissamohamed68@gmail.com" class="btn-primary-custom">M'envoyer un email</a>
-        </div>
-      </div>
-      <div class="about-highlights reveal reveal-delay-1">
-        <div class="highlight-item">
-          <div class="highlight-icon">🏥</div>
-          <div>
-            <div class="highlight-title">CliniqueApp — React + FastAPI</div>
-            <div class="highlight-desc">Système complet de gestion de clinique avec React, Neon PostgreSQL, JWT, déployé sur Vercel + Render.</div>
+          <div class="skill-category reveal reveal-delay-2">
+            <div
+              class="skill-cat-icon"
+              style="background: rgba(16, 185, 129, 0.1); color: #10b981"
+            >
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="skill-cat-title">IA & DevOps</div>
+            <div class="skill-item">
+              <span class="skill-name">OpenAI API</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 75%; background: #10b981"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Prompt Engineering</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 72%; background: #10b981"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Docker</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 60%; background: #10b981"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Git / GitHub</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 80%; background: #10b981"
+                ></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Render / Vercel</span>
+              <div class="skill-bar-wrap">
+                <div
+                  class="skill-bar"
+                  style="--w: 78%; background: #10b981"
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="highlight-item">
-          <div class="highlight-icon">🤖</div>
-          <div>
-            <div class="highlight-title">IA intégrée en production</div>
-            <div class="highlight-desc">OpenAI GPT-3.5 avec prompt engineering pour parsing de langage naturel en données structurées.</div>
+      </div>
+    </section>
+
+    <!-- ── À PROPOS ── -->
+    <section id="apropos">
+      <div class="section-inner">
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p class="section-label">À propos</p>
+            <h2 class="section-title">
+              Développeur passionné,<br />orienté solutions
+            </h2>
+            <p>
+              Je suis <strong>Mohamed-Gazali Idrissa Djibrilla</strong>,
+              développeur junior Full-Stack basé au Niger, passionné par la
+              création d'outils numériques utiles et concrets.
+            </p>
+            <p>
+              J'ai construit et déployé en production des
+              <strong>applications web complètes</strong> — Team Manager
+              (FastAPI + Streamlit + IA) et CliniqueApp (FastAPI + React +
+              PostgreSQL) — avec authentification JWT, Docker et tests
+              unitaires.
+            </p>
+            <p>
+              Je développe également une
+              <strong>application mobile Flutter</strong> pour le e-commerce
+              avec Firebase, et je maîtrise le déploiement sur Render, Vercel et
+              Streamlit Cloud.
+            </p>
+            <p>
+              Je suis disponible pour un
+              <strong>stage en développement</strong> (Backend / Full-Stack /
+              IA).
+            </p>
+            <div style="margin-top: 2rem">
+              <a
+                href="mailto:idrissamohamed68@gmail.com"
+                class="btn-primary-custom"
+                >M'envoyer un email</a
+              >
+            </div>
           </div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-icon">🔐</div>
-          <div>
-            <div class="highlight-title">Sécurité professionnelle</div>
-            <div class="highlight-desc">JWT tokens, bcrypt, routes protégées, variables d'environnement — stack de sécurité complète.</div>
-          </div>
-        </div>
-        <div class="highlight-item">
-          <div class="highlight-icon">🧪</div>
-          <div>
-            <div class="highlight-title">Tests & Docker</div>
-            <div class="highlight-desc">19 tests pytest sur Team Manager, Dockerfile + docker-compose — pratiques professionnelles appliquées.</div>
+          <div class="about-highlights reveal reveal-delay-1">
+            <div class="highlight-item">
+              <div class="highlight-icon">🏥</div>
+              <div>
+                <div class="highlight-title">CliniqueApp — React + FastAPI</div>
+                <div class="highlight-desc">
+                  Système complet de gestion de clinique avec React, Neon
+                  PostgreSQL, JWT, déployé sur Vercel + Render.
+                </div>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">🤖</div>
+              <div>
+                <div class="highlight-title">IA intégrée en production</div>
+                <div class="highlight-desc">
+                  OpenAI GPT-3.5 avec prompt engineering pour parsing de langage
+                  naturel en données structurées.
+                </div>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">🔐</div>
+              <div>
+                <div class="highlight-title">Sécurité professionnelle</div>
+                <div class="highlight-desc">
+                  JWT tokens, bcrypt, routes protégées, variables
+                  d'environnement — stack de sécurité complète.
+                </div>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">🧪</div>
+              <div>
+                <div class="highlight-title">Tests & Docker</div>
+                <div class="highlight-desc">
+                  19 tests pytest sur Team Manager, Dockerfile + docker-compose
+                  — pratiques professionnelles appliquées.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <p class="section-label">Contact</p>
-        <h2 class="section-title">Travaillons<br>ensemble</h2>
-        <p>Disponible pour un stage en développement Backend, Full-Stack ou IA.</p>
-        <div class="contact-links">
-          <a href="mailto:idrissamohamed68@gmail.com" class="contact-link">
-            <i class="fas fa-envelope"></i> idrissamohamed68@gmail.com
-          </a>
-          <a href="https://www.linkedin.com/in/mohamed-gazali-idrissa-djibrilla-94a15427b" class="contact-link" target="_blank">
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
-          <a href="https://github.com/Mohamed-Gazali" class="contact-link" target="_blank">
-            <i class="fab fa-github"></i> GitHub
-          </a>
-          <a href="https://wa.me/22791167898" class="contact-link" target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp — +227 91 16 78 98
-          </a>
-          <a href="https://www.facebook.com/@idrissa.mohamed.147565" class="contact-link" target="_blank">
-            <i class="fab fa-facebook"></i> Facebook
-          </a>
+    <!-- ── CONTACT ── -->
+    <section id="contact">
+      <div class="section-inner">
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">Travaillons<br />ensemble</h2>
+            <p>
+              Disponible pour un stage en développement Backend, Full-Stack ou
+              IA.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:idrissamohamed68@gmail.com" class="contact-link">
+                <i class="fas fa-envelope"></i> idrissamohamed68@gmail.com
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mohamed-gazali-idrissa-djibrilla-94a15427b"
+                class="contact-link"
+                target="_blank"
+              >
+                <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+              <a
+                href="https://github.com/Mohamed-Gazali"
+                class="contact-link"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a
+                href="https://wa.me/22791167898"
+                class="contact-link"
+                target="_blank"
+              >
+                <i class="fab fa-whatsapp"></i> WhatsApp — +227 91 16 78 98
+              </a>
+              <a
+                href="https://www.facebook.com/@idrissa.mohamed.147565"
+                class="contact-link"
+                target="_blank"
+              >
+                <i class="fab fa-facebook"></i> Facebook
+              </a>
+            </div>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <div class="contact-cta">
+              <h3>Vous recrutez un stagiaire ?</h3>
+              <p>
+                Disponible immédiatement pour un stage en développement.
+                Sérieux, autonome, capable de livrer des projets complets en
+                production.
+              </p>
+              <a
+                href="mailto:idrissamohamed68@gmail.com"
+                class="btn-primary-custom"
+                >Envoyer un message</a
+              >
+            </div>
+          </div>
         </div>
       </div>
-      <div class="reveal reveal-delay-1">
-        <div class="contact-cta">
-          <h3>Vous recrutez un stagiaire ?</h3>
-          <p>Disponible immédiatement pour un stage en développement. Sérieux, autonome, capable de livrer des projets complets en production.</p>
-          <a href="mailto:idrissamohamed68@gmail.com" class="btn-primary-custom">Envoyer un message</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ── FOOTER ── -->
-<footer>
-  © 2025 <span>Mohamed-Gazali</span> — Développeur Full-Stack & IA — Tous droits réservés
-</footer>
+    <!-- ── FOOTER ── -->
+    <footer>
+      © 2025 <span>Mohamed-Gazali</span> — Développeur Full-Stack & IA — Tous
+      droits réservés
+    </footer>
 
-<script>
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-  });
-  function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
-  function closeNav()  { document.getElementById('navLinks').classList.remove('open'); }
+    <script>
+      window.addEventListener("scroll", () => {
+        document
+          .getElementById("navbar")
+          .classList.toggle("scrolled", window.scrollY > 50);
+      });
+      function toggleNav() {
+        document.getElementById("navLinks").classList.toggle("open");
+      }
+      function closeNav() {
+        document.getElementById("navLinks").classList.remove("open");
+      }
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              revealObserver.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => revealObserver.observe(el));
 
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('animated'); barObserver.unobserve(e.target); } });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.skill-bar').forEach(b => barObserver.observe(b));
-</script>
-
-</body>
+      const barObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("animated");
+              barObserver.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      document
+        .querySelectorAll(".skill-bar")
+        .forEach((b) => barObserver.observe(b));
+    </script>
+  </body>
 </html>

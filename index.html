@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Mohamed-Gazali — Développeur Full-Stack & IA</title>
+  <title>Mohamed-Gazali — Développeur Full-Stack / Logiciel — Mobile & IA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -120,11 +120,14 @@
     .badge-live{background:rgba(16,185,129,.12);color:#10b981;border:1px solid rgba(16,185,129,.25)}
     .badge-live::before{content:"";width:5px;height:5px;background:#10b981;border-radius:50%;animation:pulse 2s ease-in-out infinite}
     .badge-wip{background:rgba(245,158,11,.12);color:#f59e0b;border:1px solid rgba(245,158,11,.25)}
+    .badge-ai{background:rgba(124,58,237,.14);color:#a78bfa;border:1px solid rgba(124,58,237,.3)}
+    .badge-ai::before{content:"✦";font-size:.7rem}
     .project-title{font-family:var(--font-head);font-size:1.15rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.02em;line-height:1.2}
     .project-desc{color:var(--muted);font-size:.875rem;margin-bottom:1.2rem;line-height:1.7;flex:1}
     .project-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.5rem}
     .tag{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);padding:.18rem .65rem;border-radius:4px;font-size:.72rem;letter-spacing:.03em}
     .tag.hi{background:rgba(0,212,255,.07);color:var(--accent);border-color:rgba(0,212,255,.18)}
+    .tag.ai{background:rgba(124,58,237,.08);color:#a78bfa;border-color:rgba(124,58,237,.22)}
     .project-links{display:flex;gap:1rem;margin-top:auto}
     .plink{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--muted);text-decoration:none;transition:color .2s;padding:.35rem 0;border-bottom:1px solid transparent;transition:all .2s}
     .plink:hover{color:var(--accent);border-bottom-color:rgba(0,212,255,.3)}
@@ -136,6 +139,15 @@
     .mp-key{color:rgba(0,212,255,.6)}
     .mp-val{color:rgba(255,255,255,.45)}
     .mp-badge{background:rgba(16,185,129,.2);color:#10b981;padding:.05rem .4rem;border-radius:3px;font-size:.68rem}
+    .mp-badge.ia{background:rgba(124,58,237,.2);color:#a78bfa}
+
+    /* Feature mini-grid inside featured card */
+    .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.2rem 0}
+    @media(max-width:700px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
+    .feature-item{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:10px;padding:.85rem .9rem}
+    .feature-item i{color:var(--accent);font-size:.85rem;margin-bottom:.4rem;display:block}
+    .feature-item .f-title{font-size:.76rem;font-weight:600;color:rgba(255,255,255,.82);margin-bottom:.15rem}
+    .feature-item .f-desc{font-size:.68rem;color:var(--muted);line-height:1.4}
 
     /* SKILLS */
     #competences{background:var(--bg)}
@@ -257,7 +269,7 @@
         <span class="name-3">Djibrilla</span>
       </h1>
       <p class="hero-sub">
-        Développeur <strong>Full-Stack Junior</strong> &amp; <strong>Mobile Flutter</strong> — je conçois et déploie des applications web, mobiles et des logiciels complets <strong>avec intégration IA</strong>, en production.
+        Développeur <strong>Full-Stack / Logiciel</strong> — <strong>Mobile</strong> &amp; <strong>IA</strong> — je conçois et déploie des applications web, mobiles et des logiciels complets, avec intégration IA, en production.
       </p>
       <div class="hero-btns">
         <a href="#projets" class="btn-primary"><i class="fas fa-arrow-down"></i> Voir mes projets</a>
@@ -298,19 +310,49 @@
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap">
             <div>
               <div class="project-icon" style="background:rgba(16,185,129,.1);color:#10b981">🏥</div>
-              <div class="badge badge-live">En ligne · v2</div>
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+                <div class="badge badge-live">En ligne · v3</div>
+                <div class="badge badge-ai">Chatbot IA intégré</div>
+              </div>
               <h3 class="project-title">CliniqueApp — Système de gestion de clinique</h3>
             </div>
           </div>
-          <p class="project-desc">Application web full-stack de gestion de clinique privée : patients, médecins, rendez-vous, consultations, ordonnances. Dashboard avec statistiques en temps réel, authentification JWT par rôles (admin/médecin/secrétaire), sidebar navigation moderne. Backend FastAPI + Frontend React déployés en production.</p>
+          <p class="project-desc">Application web full-stack de gestion de clinique privée : patients, médecins, rendez-vous, consultations, ordonnances. Dernière évolution majeure : un <strong style="color:rgba(255,255,255,.7);font-weight:400">assistant IA conversationnel</strong> (routes IA dédiées côté API) capable d'interagir avec les données de la clinique, en plus d'un module CRM de satisfaction patient, d'un dashboard analytique par période avec tendances et graphiques, et d'une page de paramètres cliniques. Backend FastAPI + Frontend React déployés en production.</p>
+
+          <div class="feature-grid">
+            <div class="feature-item">
+              <i class="fas fa-robot"></i>
+              <div class="f-title">Assistant IA</div>
+              <div class="f-desc">Chatbot intégré à l'app, routes IA dédiées</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-heart-pulse"></i>
+              <div class="f-title">CRM &amp; Satisfaction</div>
+              <div class="f-desc">Suivi patient, notes et avis, taux de satisfaction</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-chart-line"></i>
+              <div class="f-title">Dashboard analytique</div>
+              <div class="f-desc">KPI + tendances jour/semaine/mois, top médecins</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-sliders"></i>
+              <div class="f-title">Paramètres clinique</div>
+              <div class="f-desc">Horaires, devise, rappels RDV, gestion des rôles</div>
+            </div>
+          </div>
+
           <div class="mockup-preview">
             <div class="mp-line"><span class="mp-key">GET</span><span class="mp-val">/api/patients</span><span class="mp-badge">200 OK</span></div>
-            <div class="mp-line"><span class="mp-key">POST</span><span class="mp-val">/api/auth/login</span><span class="mp-badge">JWT ✓</span></div>
-            <div class="mp-line"><span class="mp-key">GET</span><span class="mp-val">/api/stats/dashboard</span><span class="mp-badge">Live</span></div>
+            <div class="mp-line"><span class="mp-key">POST</span><span class="mp-val">/api/ai/chat</span><span class="mp-badge ia">IA ✦</span></div>
+            <div class="mp-line"><span class="mp-key">GET</span><span class="mp-val">/api/stats/dashboard?periode=mois</span><span class="mp-badge">Live</span></div>
+            <div class="mp-line"><span class="mp-key">GET</span><span class="mp-val">/api/crm/overview</span><span class="mp-badge">CRM</span></div>
           </div>
+
           <div class="project-tags">
             <span class="tag hi">FastAPI</span><span class="tag hi">React</span><span class="tag hi">Neon PostgreSQL</span>
-            <span class="tag">JWT + bcrypt</span><span class="tag">Vite</span><span class="tag">Render</span><span class="tag">Vercel</span>
+            <span class="tag ai">Assistant IA</span><span class="tag ai">Chatbot</span>
+            <span class="tag">JWT + bcrypt</span><span class="tag">CRM</span><span class="tag">Vite</span><span class="tag">Render</span><span class="tag">Vercel</span>
           </div>
           <div class="project-links">
             <a href="https://clinique-app-rouge.vercel.app/" class="plink" target="_blank"><i class="fas fa-external-link-alt"></i> App live</a>
@@ -332,14 +374,54 @@
           </div>
         </div>
 
-        <!-- TEAM MANAGER -->
-        <div class="project-card card-col-6 reveal reveal-delay-1" style="--card-accent:#00d4ff">
-          <div class="project-icon" style="background:rgba(0,212,255,.1);color:#00d4ff">🚀</div>
-          <div class="badge badge-live">En ligne</div>
-          <h3 class="project-title">Team Manager — Gestion d'équipe avec IA</h3>
-          <p class="project-desc">Application web full-stack : tableau Kanban, auth JWT, création de tâches via IA GPT-3.5 en langage naturel, PostgreSQL, Docker, 19 tests pytest.</p>
+        <!-- TEAM MANAGER — FEATURED -->
+        <div class="project-card card-featured card-col-8 reveal reveal-delay-1" style="--card-accent:#00d4ff;background:linear-gradient(140deg,rgba(0,212,255,.05) 0%,rgba(124,58,237,.03) 100%);border-color:rgba(0,212,255,.18)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+            <div>
+              <div class="project-icon" style="background:rgba(0,212,255,.1);color:#00d4ff">🚀</div>
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+                <div class="badge badge-live">En ligne</div>
+                <div class="badge badge-ai">IA intégrée</div>
+              </div>
+              <h3 class="project-title">Team Manager — Gestion d'équipe intelligente</h3>
+            </div>
+          </div>
+          <p class="project-desc">Application web full-stack de gestion d'équipe et de tâches : tableau Kanban (To Do → En cours → Pause → Terminé), authentification avec rôles admin/membre, panel admin dédié, et une IA GPT-3.5 capable de créer des tâches automatiquement depuis une description en langage naturel. Backend FastAPI + SQLModel, frontend Streamlit, 19 tests pytest, déployé en production (Render + Streamlit Cloud).</p>
+
+          <div class="feature-grid">
+            <div class="feature-item">
+              <i class="fas fa-diagram-project"></i>
+              <div class="f-title">Kanban Board</div>
+              <div class="f-desc">To Do → En cours → Pause → Terminé</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-robot"></i>
+              <div class="f-title">IA intégrée</div>
+              <div class="f-desc">Création de tâches en langage naturel via GPT-3.5</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-users"></i>
+              <div class="f-title">Gestion d'équipe</div>
+              <div class="f-desc">Membres, assignation et suivi par personne</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-chart-line"></i>
+              <div class="f-title">Dashboard &amp; Admin</div>
+              <div class="f-desc">Stats temps réel, rôles, panel admin</div>
+            </div>
+          </div>
+
+          <div class="mockup-preview">
+            <div class="mp-line"><span class="mp-key">GET</span><span class="mp-val">/api/tasks</span><span class="mp-badge">200 OK</span></div>
+            <div class="mp-line"><span class="mp-key">POST</span><span class="mp-val">/api/ai/generate-task</span><span class="mp-badge ia">IA ✦</span></div>
+            <div class="mp-line"><span class="mp-key">GET</span><span class="mp-val">/api/dashboard/stats</span><span class="mp-badge">Live</span></div>
+            <div class="mp-line"><span class="mp-key">GET</span><span class="mp-val">/api/admin/users</span><span class="mp-badge">Admin</span></div>
+          </div>
+
           <div class="project-tags">
-            <span class="tag hi">FastAPI</span><span class="tag hi">OpenAI GPT-3.5</span><span class="tag">Streamlit</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">pytest</span>
+            <span class="tag hi">FastAPI</span><span class="tag hi">SQLModel</span><span class="tag hi">OpenAI GPT-3.5</span>
+            <span class="tag ai">IA</span><span class="tag ai">Kanban</span>
+            <span class="tag">Streamlit</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">pytest (19 tests)</span><span class="tag">Render</span>
           </div>
           <div class="project-links">
             <a href="https://team-manager-yjp4ykafyv4phfmpot6h6h.streamlit.app/" class="plink" target="_blank"><i class="fas fa-external-link-alt"></i> App live</a>
@@ -347,14 +429,38 @@
           </div>
         </div>
 
-        <!-- FLUTTER APP -->
-        <div class="project-card card-col-6 reveal reveal-delay-2" style="--card-accent:#7c3aed">
+        <!-- FLUTTER APP + DASHBOARD ADMIN -->
+        <div class="project-card card-col-4 reveal reveal-delay-2" style="--card-accent:#7c3aed">
           <div class="project-icon" style="background:rgba(124,58,237,.1);color:#7c3aed">📱</div>
           <div class="badge badge-wip">En cours</div>
-          <h3 class="project-title">App Mobile E-commerce + Dashboard Admin</h3>
-          <p class="project-desc">Application mobile Flutter reliée à un dashboard admin web (Firebase Hosting) : commandes en temps réel, Firebase Auth, Firestore, notifications push.</p>
+          <h3 class="project-title">App Mobile E-commerce Flutter + Dashboard Admin</h3>
+          <p class="project-desc">Application mobile Flutter complète (8 écrans) reliée à un dashboard admin web temps réel hébergé sur Firebase Hosting : authentification, catalogue et panier Firestore, checkout, notifications push, et gestion des commandes &amp; statistiques côté admin.</p>
+
+          <div class="feature-grid" style="grid-template-columns:repeat(2,1fr)">
+            <div class="feature-item">
+              <i class="fas fa-mobile-screen"></i>
+              <div class="f-title">8 écrans</div>
+              <div class="f-desc">Accueil, catalogue, panier, checkout, auth, profil</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-fire"></i>
+              <div class="f-title">Firebase Auth &amp; Firestore</div>
+              <div class="f-desc">Connexion sécurisée, données en temps réel</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-bell"></i>
+              <div class="f-title">Notifications push</div>
+              <div class="f-desc">Firebase Messaging + notifications locales</div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-chart-simple"></i>
+              <div class="f-title">Dashboard admin</div>
+              <div class="f-desc">Statistiques, statuts de commande</div>
+            </div>
+          </div>
+
           <div class="project-tags">
-            <span class="tag hi">Flutter</span><span class="tag hi">Dart</span><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag hi">Dashboard Web</span>
+            <span class="tag hi">Flutter</span><span class="tag hi">Dart</span><span class="tag">Firebase Auth</span><span class="tag">Firestore</span><span class="tag">go_router</span><span class="tag">Provider / Riverpod</span><span class="tag hi">Dashboard Web</span>
           </div>
           <div class="project-links">
             <a href="https://mon-ecommerce-flutter.web.app" class="plink" target="_blank"><i class="fas fa-external-link-alt"></i> Dashboard live</a>
@@ -427,6 +533,7 @@
             <span class="chip chip-accent">FastAPI <span class="chip-level">85%</span></span>
             <span class="chip chip-accent">Python <span class="chip-level">83%</span></span>
             <span class="chip chip-accent">PostgreSQL <span class="chip-level">75%</span></span>
+            <span class="chip chip-accent">SQLite <span class="chip-level">60%</span></span>
             <span class="chip chip-accent">JWT + bcrypt <span class="chip-level">80%</span></span>
             <span class="chip chip-accent">API REST <span class="chip-level">82%</span></span>
           </div>
@@ -440,6 +547,7 @@
             <span class="chip chip-purple">Flutter / Dart <span class="chip-level">68%</span></span>
             <span class="chip chip-purple">HTML / CSS <span class="chip-level">85%</span></span>
             <span class="chip chip-purple">Tailwind CSS <span class="chip-level">75%</span></span>
+            <span class="chip chip-purple">Bootstrap CSS <span class="chip-level">80%</span></span>
             <span class="chip chip-purple">JavaScript <span class="chip-level">55%</span></span>
           </div>
         </div>
@@ -448,11 +556,12 @@
           <div class="skill-card-icon" style="background:rgba(16,185,129,.1);color:#10b981"><i class="fas fa-robot"></i></div>
           <div class="skill-card-title">IA &amp; DevOps</div>
           <div class="skill-chips">
-            <span class="chip chip-green">OpenAI API <span class="chip-level">75%</span></span>
-            <span class="chip chip-green">Prompt Engineering <span class="chip-level">72%</span></span>
+            <span class="chip chip-green">OpenAI API <span class="chip-level">78%</span></span>
+            <span class="chip chip-green">Chatbot IA <span class="chip-level">74%</span></span>
+            <span class="chip chip-green">Prompt Engineering <span class="chip-level">75%</span></span>
             <span class="chip chip-green">Docker <span class="chip-level">60%</span></span>
             <span class="chip chip-green">Git / GitHub <span class="chip-level">80%</span></span>
-            <span class="chip chip-green">Firebase / Vercel <span class="chip-level">78%</span></span>
+            <span class="chip chip-green">Firebase / Vercel / Render<span class="chip-level">78%</span></span>
           </div>
         </div>
 
@@ -469,9 +578,9 @@
         <div class="about-text reveal">
           <p class="section-eyebrow">À propos</p>
           <h2 class="section-title">Développeur passionné,<br>orienté solutions</h2>
-          <p>Je suis <strong>Mohamed-Gazali Idrissa Djibrilla</strong>, développeur junior Full-Stack basé au <strong>Niger</strong>, passionné par la création d'outils numériques utiles et concrets.</p>
-          <p>J'ai construit et déployé en production plusieurs applications web complètes — <strong>Team Manager</strong> (FastAPI + Streamlit + IA), <strong>CliniqueApp</strong> (FastAPI + React + PostgreSQL) et <strong>Fady Focus Medical</strong> — avec authentification JWT, Docker et tests unitaires.</p>
-          <p>Je développe également une <strong>application mobile Flutter</strong> pour le e-commerce avec Firebase, reliée à un dashboard admin web en temps réel.</p>
+          <p>Je suis <strong>Mohamed-Gazali Idrissa Djibrilla</strong>, développeur Full-Stack basé au <strong>Niger</strong>, passionné par la création d'outils numériques utiles et concrets.</p>
+          <p>J'ai construis et déployé en production plusieurs applications web complètes — <strong>Team Manager</strong> (FastAPI + Streamlit + SQLite + IA), <strong>CliniqueApp</strong> (FastAPI + React + PostgreSQL, désormais dotée d'un assistant IA, d'un module CRM et d'un dashboard analytique avancé) et <strong>Fady Focus Medical</strong> — avec authentification JWT, Docker et tests unitaires.</p>
+          <p>Je développe également une <strong>application mobile Flutter</strong> complète pour le e-commerce (8 écrans, authentification et notifications Firebase), reliée à un dashboard admin web en temps réel.</p>
           <p>Je suis disponible pour un <strong>stage en développement</strong> Backend / Full-Stack / IA.</p>
           <div class="about-cta">
             <a href="mailto:idrissamohamed68@gmail.com" class="btn-primary"><i class="fas fa-envelope"></i> M'envoyer un email</a>
@@ -482,9 +591,17 @@
         <div class="reveal reveal-delay-1">
           <div class="timeline">
             <div class="tl-item">
-              <div class="tl-dot">🏥</div>
+              <div class="tl-dot">🤖</div>
               <div class="tl-content">
                 <span class="tl-date">Récent · En prod</span>
+                <div class="tl-title">CliniqueApp v3 — Assistant IA &amp; CRM</div>
+                <div class="tl-desc">Ajout d'un chatbot IA (routes dédiées), d'un module CRM de satisfaction patient et d'un dashboard analytique avec tendances par période.</div>
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">🏥</div>
+              <div class="tl-content">
+                <span class="tl-date">Livré · En prod</span>
                 <div class="tl-title">CliniqueApp v2 — React + FastAPI</div>
                 <div class="tl-desc">Système complet de gestion de clinique — mis à jour et redéployé automatiquement via GitHub + Vercel.</div>
               </div>
@@ -502,15 +619,7 @@
               <div class="tl-content">
                 <span class="tl-date">En cours · Firebase</span>
                 <div class="tl-title">Flutter + Dashboard Firebase</div>
-                <div class="tl-desc">App mobile e-commerce reliée à un dashboard admin web hébergé sur Firebase Hosting — commandes en temps réel.</div>
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot">🤖</div>
-              <div class="tl-content">
-                <span class="tl-date">Production · GPT-3.5</span>
-                <div class="tl-title">IA intégrée en production</div>
-                <div class="tl-desc">OpenAI GPT-3.5 avec prompt engineering pour parsing de langage naturel en données structurées.</div>
+                <div class="tl-desc">App mobile e-commerce Flutter (8 écrans, Firebase Auth/Firestore, notifications push) reliée à un dashboard admin web hébergé sur Firebase Hosting — commandes en temps réel.</div>
               </div>
             </div>
           </div>
@@ -528,7 +637,7 @@
         <div class="reveal">
           <p class="section-eyebrow">Contact</p>
           <h2 class="section-title">Travaillons<br>ensemble</h2>
-          <p style="color:var(--muted);font-size:.95rem;margin-top:1rem">Disponible immédiatement pour un stage en développement Backend, Full-Stack ou IA.</p>
+          <p style="color:var(--muted);font-size:.95rem;margin-top:1rem">Disponible immédiatement pour un stage en développement Front-end Backend, Full-Stack ou IA.</p>
           <div class="contact-links">
             <a href="mailto:idrissamohamed68@gmail.com" class="contact-link"><i class="fas fa-envelope"></i><span>idrissamohamed68@gmail.com</span></a>
             <a href="https://www.linkedin.com/in/mohamed-gazali-idrissa-djibrilla-94a15427b" class="contact-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
@@ -553,7 +662,7 @@
   <footer>
     <div class="footer-inner">
       <a class="logo" href="#">MG<span>.</span></a>
-      <span>© 2025 Mohamed-Gazali — Développeur Full-Stack &amp; IA</span>
+      <span>© 2025 Mohamed-Gazali — Développeur Full-Stack / Logiciel — Mobile &amp; IA</span>
       <div class="footer-links">
         <a href="https://github.com/Mohamed-Gazali" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/mohamed-gazali-idrissa-djibrilla-94a15427b" target="_blank"><i class="fab fa-linkedin"></i></a>
